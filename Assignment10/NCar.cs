@@ -13,6 +13,9 @@ namespace Assignment10
         string make;
         float speed;
 
+        double fuelLeft;
+        public double KmDriven { get; private set; }
+
         public NCar(int yearOfModel, string make)
         {
             this.yearOfModel = yearOfModel;
@@ -22,9 +25,28 @@ namespace Assignment10
 
         public float GetSpeed() => speed;
 
-        public void Accelerate() => speed += 5;
+        public void Accelerate()
+        {
+            if (fuelLeft < 0.5f)
+            {
+                throw new NoFuelException();
+            }
+            speed += 5;
+            fuelLeft -= 0.5f;
+        }
 
-        public void Brake() => speed -= 5;
+        public void Brake() 
+        {
+            if(fuelLeft < 0.5f)
+            {
+                throw new NoFuelException();
+            }
+            speed -= 5;
+            fuelLeft -= 0.5f;
+        }
+
+        public void AddGas(double fuelToAdd) => fuelLeft += fuelToAdd;
+        public double GasLeft => fuelLeft;
 
     }
 }
