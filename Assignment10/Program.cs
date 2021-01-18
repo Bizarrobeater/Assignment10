@@ -7,7 +7,7 @@ namespace Assignment10
     {
         static void Main(string[] args)
         {
-            Solution10o3();
+            Solution10o4();
         }
 
         static void Solution10o0()
@@ -109,6 +109,30 @@ namespace Assignment10
                     Console.WriteLine($"Realised runs = {runs}");
                     break;
                 }
+            }
+        }
+
+        static void Solution10o4()
+        {
+            float[][] startPoss = new float[][]
+            {
+                new float[]{1,1 },
+                new float[]{-1,1},
+                new float[]{-1,-1},
+                new float[]{1,-1},
+                new float[]{123.123f, 4.75463f}
+            };
+
+            Moth testMoth;
+            Console.WriteLine("Testing the flight of Moths\n");
+            foreach (float[] startPos in startPoss)
+            {
+                Console.WriteLine($"Moth start position: ({startPos[0]} - {startPos[1]})");
+                Console.WriteLine($"Expected position after moving: ({startPos[0] / 2} - {startPos[1] / 2})");
+                testMoth = new Moth(startPos[0], startPos[1]);
+                testMoth.MoveToLight();
+                float[] newPos = testMoth.GetPosition();
+                Console.WriteLine($"Result position: ({newPos[0]} - {newPos[1]})\n");
             }
         }
     }
