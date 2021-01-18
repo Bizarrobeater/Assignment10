@@ -7,7 +7,7 @@ namespace Assignment10
     {
         static void Main(string[] args)
         {
-            Solution10o4();
+            Solution10o5Part1();
         }
 
         static void Solution10o0()
@@ -134,6 +134,25 @@ namespace Assignment10
                 float[] newPos = testMoth.GetPosition();
                 Console.WriteLine($"Result position: ({newPos[0]} - {newPos[1]})\n");
             }
+        }
+
+        static void Solution10o5Part1()
+        {
+            NCar testCar = new NCar(2008, "BMW");
+
+            for (int i = 0; i < 5; i++)
+            {
+                testCar.Accelerate();
+                Console.WriteLine($"Current speed - {testCar.GetSpeed()}");
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                testCar.Brake();
+                Console.WriteLine($"Current speed - {testCar.GetSpeed()}");
+            }
+
+
         }
     }
 }
